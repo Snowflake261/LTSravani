@@ -1,0 +1,30 @@
+#include <Ultrasonic.h> // Include the Ultrasonic library
+
+// Define the pins for the ultrasonic sensor and LED
+#define TRIGGER_PIN 18
+#define ECHO_PIN 19
+#define LED_PIN 2
+
+// Create an instance of the Ultrasonic class
+Ultrasonic ultrasonic(TRIGGER_PIN, ECHO_PIN);
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT); // Set the LED pin as an output
+}
+
+void loop() {
+  // Read the distance from the ultrasonic sensor
+  int distance = ultrasonic.read();
+
+  // Blink the LED if the distance is less than 10 cm
+  if (distance < 10) {
+    digitalWrite(LED_PIN, HIGH);
+    delay(500);
+    digitalWrite(LED_PIN, LOW);
+    delay(500);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
+
+  delay(100); // Wait for 100 ms before taking the next reading
+}
