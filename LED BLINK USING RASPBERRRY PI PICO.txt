@@ -1,0 +1,10 @@
+from machine import Pin
+import utime
+
+# Define the LED pin
+led_pin = Pin(5, Pin.OUT)
+
+# Blink the LED
+while True:
+    led_pin.value(not led_pin.value())  # Toggle the LED state
+    utime.sleep(0.5)  # Wait for 0.5 seconds
